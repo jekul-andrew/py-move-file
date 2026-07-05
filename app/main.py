@@ -27,7 +27,7 @@ def move_file(command: str) -> None:
 
     cmd, origin, destination = str_parts
 
-    if not os.path.exists(origin):
+    if not os.path.exists(origin) or not os.path.isfile(origin):
         raise OriginFileNotExistsError(file_path=origin)
 
     dir_path = os.path.dirname(destination)
