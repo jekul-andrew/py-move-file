@@ -43,4 +43,11 @@ def move_file(command: str) -> None:
 
     destination_path = os.path.join(dir_path, dest_filename)
 
-    os.rename(source, destination_path)
+    # os.rename(source, destination_path)
+
+    with (open(source, "r") as source_obj,
+          open(destination_path, "w") as destination_file):
+
+        destination_file.write(source_obj.read())
+
+    os.remove(source)
